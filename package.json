@@ -1,0 +1,82 @@
+{
+  "name": "graphql2typescript",
+  "version": "0.1.0",
+  "description": "Opinionated toolset for GraphQL + TypeScript development, including code generation",
+  "keywords": [
+    "graphql",
+    "typescript",
+    "code-generation"
+  ],
+  "contributors": [
+    "Morris Brodersen <mb@morrisbrodersen.de> (http://morrisbrodersen.de)"
+  ],
+  "license": "ISC",
+  "module": "src/index.ts",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "compile": "tsc --noEmit",
+    "lint": "tslint --project .",
+    "format": "prettier --single-quote --write */*.ts */**/*.ts *.json",
+    "test": "nyc mocha test",
+    "gql2ts": "ts-node example/gql2ts.ts | prettier --parser typescript > example/src/generated/schema.ts && tsc --noEmit example/src/generated/schema.ts",
+    "example": "ts-node-dev --no-notify example/app.ts"
+  },
+  "nyc": {
+    "extension": [
+      ".js",
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "dist",
+      "example",
+      "test",
+      "coverage"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "cache": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tslint",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "graphql": "^14.5.8"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "@types/got": "^9.6.9",
+    "@types/graphql-iso-date": "^3.3.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.14.20",
+    "@types/prettier": "^1.18.3",
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "got": "^9.6.0",
+    "graphql-import": "^0.7.1",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-tools": "^4.0.6",
+    "husky": "^3.0.8",
+    "lint-staged": "^9.4.3",
+    "mocha": "^6.2.1",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "source-map-support": "^0.5.13",
+    "ts-node": "^8.4.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  }
+}

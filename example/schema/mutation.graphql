@@ -1,0 +1,12 @@
+type Mutation {
+  register(input: RegistrationInput!): RegistrationResult
+}
+
+type RegistrationResult {
+  ok: Boolean!
+}
+
+input RegistrationInput {
+  username: String!
+  password: String!
+}

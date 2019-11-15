@@ -1,0 +1,6 @@
+--require ./node_modules/ts-node/register
+--require ./node_modules/source-map-support/register
+--extension ts
+--recursive
+--timeout 9999
+--exit

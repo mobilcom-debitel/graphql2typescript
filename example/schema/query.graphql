@@ -1,0 +1,58 @@
+type Query {
+  hello: String!
+  time: Time!
+  customers(limit: Int, offset: Int, q: String): [Customer!]
+  customer(id: String!): Customer
+  login(username: String!, password: String!): Login
+  search(q: String!): [SearchResult!]
+}
+
+"A customer"
+interface Customer {
+  id: String!
+  type: CustomerType!
+  name: String!
+  "The customer's contracts"
+  contracts: [Contract!]
+}
+
+enum CustomerType {
+  INDIVIDUAL,
+  COMPANY
+}
+
+type Individual implements Customer {
+  id: String!
+  type: CustomerType!
+  name: String!
+  contracts: [Contract!]
+  person: Person
+}
+
+type Company implements Customer {
+  id: String!
+  type: CustomerType!
+  name: String!
+  contracts: [Contract!]
+  form: String!
+  employees: [Person!]
+}
+
+type Contract {
+  id: String!
+  name: String!
+  customer: Customer
+  created: DateTime!
+}
+
+type Person {
+  givenName: String!
+  familyName: String!
+  dateOfBirth: Date!
+}
+
+union SearchResult = Individual | Company | Contract | Person
+
+type Login {
+  token: String!
+}
