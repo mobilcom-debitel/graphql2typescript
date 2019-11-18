@@ -11,18 +11,22 @@
     "Morris Brodersen <mb@morrisbrodersen.de> (http://morrisbrodersen.de)"
   ],
   "license": "ISC",
-  "main": "src/index.ts",
   "module": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
+    "dist",
     "src"
   ],
   "scripts": {
-    "compile": "tsc --noEmit",
+    "build": "tsc",
+    "clean": "rm -rf dist",
     "lint": "tslint --project .",
     "format": "prettier --single-quote --write */*.ts */**/*.ts *.json",
     "test": "nyc mocha test",
-    "gql2ts": "ts-node example/gql2ts.ts | prettier --parser typescript > example/src/generated/schema.ts && tsc --noEmit example/src/generated/schema.ts",
-    "example": "ts-node-dev --no-notify example/app.ts"
+    "gql2ts": "ts-node example/gql2ts.ts | prettier --parser typescript > example/src/generated/schema.ts",
+    "example": "ts-node-dev --no-notify example/app.ts",
+    "prepare": "npm run clean && npm run build"
   },
   "nyc": {
     "extension": [

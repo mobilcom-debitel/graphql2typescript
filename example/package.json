@@ -6,7 +6,7 @@
   "license": "ISC",
   "scripts": {
     "start": "ts-node app.ts",
-    "gql2ts": "ts-node gql2ts.ts | prettier --parser typescript > src/generated/schema.ts && tsc --noEmit src/generated/schema.ts"
+    "gql2ts": "ts-node gql2ts.ts | prettier --parser typescript > src/generated/schema.ts"
   },
   "dependencies": {
     "express": "^4.17.1",

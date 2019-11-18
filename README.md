@@ -20,9 +20,8 @@ Here's a quick walkthrough:
 - Create a `gql2ts.ts` script (see `example/gql2ts.ts`).
   - Use code completion to explore the possible options.
 - Add a `gql2ts` script to your `package.json` (see `example/package.json`).
-  - The example uses `ts-node` to run the script,
-  - prettifies it using `prettier`, and
-  - verifies the result with the TypeScript compiler `tsc`.
+  - The example uses `ts-node` to run the script, and
+  - prettifies it using `prettier`.
   - Customize to fit your needs.
 - Use `npm run gql2ts` to generate TypeScript interfaces for types and resolvers (see `example/src/generated/schema.ts`).
 - Implement resolvers using the generated interfaces (see `example/src/resolvers.ts`).
